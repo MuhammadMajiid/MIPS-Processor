@@ -11,18 +11,22 @@
 module Top 
 //-----------------Ports-----------------\\
 (
-    input  logic reset_n,
-    input  logic clock,
+    input  logic reset_n,             //  Asynchrounus Active low reset.
+    input  logic clock,               //  System's clock.
 
-    output logic 
+    output logic [31:0] write_data,   //  The data to be written in the data memory.
+    output logic [31:0] read_data,    //  The data read from the data memory.
+    output logic [31:0] alu_out,      //  ALU result.
+    output logic [31:0] instruction,  //  Intsruction from the Intsruction memory.
 );
 
 //-----------------Control Signals-----------------\\
-logic        pc_w;
-logic        mem_write_w;       //  Control signal from the CU to the RF.
-logic [31:0] instr_w;
-logic [31:0] alu_out_w;
-logic [31:0] write_data_w;
+logic        pc_w;          //  The PC out from the data path unit.
+logic        mem_write_w;   //  Control signal from the CU to the RF.
+logic [31:0] instr_w;       //  Intsruction from the Intsruction memory.
+logic [31:0] alu_out_w;     //  ALU result.
+logic [31:0] write_data_w;  //  The data to be written in the data memory.
+logic [31:0] read_data_w;   //  The data read from the data memory.
 
 //------------>>> MIPS Unit.
 MIPS mips(
@@ -54,5 +58,11 @@ InstrMem im(
 
     .instr(instr_w)
 );
+
+//-----------------Output logic-----------------\\
+assign instruction = instr_w;
+assign alu_out     = alu_out_w;
+assign write_data  = write_data_w
+assign read_data   = read_data_w;
 
 endmodule
