@@ -18,12 +18,11 @@ module MIPS
 
     output reg [31:0] pc,
     output reg [31:0] alu_out,
-    output reg [31:0] write_data
-    output reg        mem_write,
+    output reg [31:0] write_data,
+    output reg        mem_write
 );
 
 //-----------------Control Signals-----------------\\
-logic        reset_n_synch_w;   //  The output reset from the Reset Synchronizer Unit.
 logic        reg_write_w;       //  Control signal from the CU to the RF.
 logic        reg_dest_w;        //  Control signal from the CU to the RF.
 logic        alu_src_w;         //  Control signal from the CU to the RF.
@@ -32,15 +31,6 @@ logic        jump_w;            //  Control signal from the CU to the RF.
 logic [2:0]  alu_control_w;     //  Control signal from the CU to the RF.
 logic        zero_w;            //  Control signal from the ALU.
 logic        pc_src_w;          //  Control signal from the anding between zero_w & branch.
-
-
-//------------>>> Reset Synchronizer Unit.
-ResetSynchronizer rs(
-    .reset_n(reset_n),
-    .clock(clock),
-
-    .reset_n_synch(reset_n_synch_w)
-);
 
 //------------>>> Control Unit.
 ControlUnit Cu(
@@ -54,13 +44,13 @@ ControlUnit Cu(
     .reg_dest(reg_dest_w),
     .reg_write(reg_write_w),
     .jump(jump_w),
-    .pc_src(pc_src_w)
+    .pc_src(pc_src_w),
     .mem_write(mem_write)
 );
 
 //------------>>> Data Path Unit.
 DataPath dp(
-    .reset_n(reset_n_synch_w),
+    .reset_n_synch(reset_n),
     .clock(clock),
     .instruction(instruction),
     .read_data(read_data),
@@ -70,6 +60,7 @@ DataPath dp(
     .alu_src(alu_src_w),
     .reg_dest(reg_dest_w),
     .reg_write(reg_write_w),
+    .jump(jump_w),
 
     .pc(pc),
     .alu_out(alu_out),

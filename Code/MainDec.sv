@@ -10,7 +10,7 @@
 module MainDec 
 //-----------------Ports-----------------\\
 (
-    input logic [5:0]  opcode,
+    input logic [5:0]  opcode_md,
 
     output logic       reg_write,
     output logic       reg_dest,
@@ -24,7 +24,7 @@ module MainDec
 //-----------------Register-----------------\\
 logic [8:0] controllers;
 
-//-----------------Instruction encoding-----------------\\
+//-----------------Instruction Opcode-----------------\\
 localparam  RTYPE = 6'b000000,
             LW    = 6'b100011,
             SW    = 6'b101011,
@@ -34,13 +34,13 @@ localparam  RTYPE = 6'b000000,
 
 //-----------------6-1 MUX for the instruction-----------------\\
 always_comb begin
-    case (opcode)
+    case (opcode_md)
         RTYPE: controllers = 9'b1100_00100;
         LW:    controllers = 9'b1010_01000;
-        SW:    controllers = 9'b0110_10000;
-        BEQ:   controllers = 9'b0101_00010;
+        SW:    controllers = 9'b0010_10000;
+        BEQ:   controllers = 9'b0001_00010;
         ADDI:  controllers = 9'b1010_00000;
-        JUMP:  controllers = 9'b0100_00101;
+        JUMP:  controllers = 9'b0000_00001;
 
         default: controllers = 9'b1100_00100;  //  R-Type
     endcase

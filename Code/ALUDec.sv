@@ -26,6 +26,7 @@ localparam  ADDFUN  = 6'b100000,
             SUBFUN  = 6'b100010,
             ANDFUN  = 6'b100100,
             ORFUN   = 6'b100101,
+            MULFUN  = 6'b011100,
             SLTFUN  = 6'b101010;
 
 //-----------------Output encoding-----------------\\
@@ -33,6 +34,7 @@ localparam  AND     = 3'b000,
             OR      = 3'b001,
             ADD     = 3'b010,
             SUB     = 3'b110,
+            MUL     = 3'b101,
             SLT     = 3'b111;
 
 //-----------------ALU Decoder logic-----------------\\
@@ -43,7 +45,7 @@ begin
     begin
         alu_control = ADD;
     end
-    else if(alu_op[0])
+    else if(alu_op == SUBOP)
     begin
         alu_control = SUB;
     end
@@ -55,6 +57,7 @@ begin
             ANDFUN: alu_control = AND;
             ORFUN:  alu_control = OR;
             SLTFUN: alu_control = SLT;
+            MULFUN: alu_control = MUL;
 
             default: alu_control = ADD;
         endcase

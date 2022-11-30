@@ -30,7 +30,7 @@ logic       branch_w;
 //-----------------Main decoder instance-----------------\\
 MainDec md(
     //  Input
-    .opcode(opcode),
+    .opcode_md(opcode),
 
     //  Outputs
     .mem_to_reg(mem_to_reg),
@@ -39,6 +39,7 @@ MainDec md(
     .alu_src(alu_src),
     .reg_dest(reg_dest),
     .reg_write(reg_write),
+    .alu_op(alu_op_w),
     .jump(jump)
 );
 

@@ -11,8 +11,8 @@ module SignExtn
 //-----------------Parameters-----------------\\ 
 #(
     parameter   BEFORE     = 16,
-                AFTER      = 32,
-                SIGNAMOUNT = (AFTER-BEFORE) 
+                AFTER      = 32
+                 
 )
 //-----------------Ports-----------------\\
 (
@@ -20,6 +20,7 @@ module SignExtn
 
     output logic [(AFTER-1):0] data_signed
 );
+localparam SIGNAMOUNT = (AFTER-BEFORE);
 
 //-----------------Output logic-----------------\\
 always_comb

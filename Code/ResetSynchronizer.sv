@@ -15,25 +15,16 @@ module ResetSynchronizer
     output logic reset_n_synch  //  The Synchronized Reset-deassertion.
 );
 
-reg  first_stage;
-reg  second_stage;
-wire mid_stages;
-
 //  The Synchronizer logic
 always_ff @(posedge clock or negedge reset_n) begin
     if(!reset_n)
     begin
-        first_stage  <= 1'b0;
-        second_stage <= 1'b0;
+        reset_n_synch  <= 1'b0;
     end
     else 
     begin
-        first_stage  <= 1'b1;
-        second_stage <= first_stage; 
+        reset_n_synch  <= 1'b1;
     end
 end
-
-//  The Synchronized deassertion
-assign reset_n_synch = (!reset_n)? 1'b0 : q2;
 
 endmodule
