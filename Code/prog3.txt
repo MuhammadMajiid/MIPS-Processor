@@ -1,6 +1,7 @@
-// This Machine Code Calculates the Factorial of a given Number
+// The machine code provided is the factorial of a numbers
+// In Hexadecimal
 00008020
-20100007            // change the least two significant decimals with the number in hexadecimal format
+20100007            // The least two significant digits represent the number in Hex.
 00008820
 20110001
 12000003
