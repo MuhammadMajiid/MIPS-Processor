@@ -93,7 +93,7 @@ The Data Path is composed of several separate components, each is well designed 
 
 #### Factorial!
 
-*   Given the machine code for the factorial test:
+*   Given the machine code for the factorial test for [7]:
 
 -   The test: *[Factorial](https://github.com/MuhammadMajiid/MIPS-Processor/blob/main/Code/prog3.txt)*
 
@@ -103,7 +103,7 @@ The Data Path is composed of several separate components, each is well designed 
 
 #### GCD
 
-*   Given the machine code for the GCD test:
+*   Given the machine code for the GCD test for [120, 180]:
 
 -   The test: *[GCD](https://github.com/MuhammadMajiid/MIPS-Processor/blob/main/Code/prog2.txt)*
 
