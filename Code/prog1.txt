@@ -1,3 +1,9 @@
+// The program exercises all of the instructions by performing a computation
+// that should produce the correct answer only if all of the instructions are
+// functioning properly. Specifically, the program will write the value 7 to
+// address 84 if it runs correctly, and is unlikely to do so if the hardware
+// is buggy. This is an example of ad-hoc testing.
+
 20020005
 2003000c
 2067fff7
@@ -15,4 +21,6 @@ ac670044
 8c020050
 08000011
 20020001
-ac020000  // ac020054
+ac020054
+8c020054
+ac020000

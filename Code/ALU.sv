@@ -25,6 +25,7 @@ module ALU
 
 //-----------------Registers-----------------\\
 logic [2:0] state;
+logic [31:0] cla_out;
 
 //-----------------Encodings-----------------\\
 localparam  AND      = 3'b000,
@@ -60,7 +61,7 @@ begin
 
             ADD:
             begin
-                alu_result = src_a + src_b;
+                alu_result = cla_out;
             end
 
             NOTUSED1:
@@ -96,4 +97,12 @@ end
 //-----------------Zero Flag Logic-----------------\\
 assign zero_flag = (!alu_result);
 
+//-----------------Instances-----------------\\
+CLA_Adder #(32) claComp(
+    .in_1(src_a),
+    .in_2(src_b),
+    .carry_in(1'b0),
+
+    .sum(cla_out)
+);
 endmodule

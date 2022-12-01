@@ -7,7 +7,7 @@
 
 module InstrMem 
 #(
-    parameter myPROGRAM = "prog1.txt"
+    parameter myPROGRAM = "prog3.txt"
 )
 (
     input  logic [31:0] pc,
