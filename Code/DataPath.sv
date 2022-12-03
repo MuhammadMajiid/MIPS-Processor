@@ -12,7 +12,7 @@ module DataPath
 (
     input logic        reset_n_synch,      //  Asynchrounus Active low reset.
     input logic        clock,        //  System's clock.
-    input logic [31:0] instruction,  //  The 32-bit Instruction from the instruction memory.
+    input logic [25:0] instruction,  //  The 32-bit Instruction from the instruction memory.
     input logic [31:0] read_data,    //  The output from the Data memory to the Register file.
     input logic [2:0]  alu_control,  //  Control signal from the CU to the RF.
     input logic        pc_src,       //  Control signal from the anding between zero_w & branch.

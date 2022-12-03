@@ -52,7 +52,7 @@ ControlUnit Cu(
 DataPath dp(
     .reset_n_synch(reset_n),
     .clock(clock),
-    .instruction(instruction),
+    .instruction(instruction[25:0]),
     .read_data(read_data),
     .alu_control(alu_control_w),
     .pc_src(pc_src_w),
