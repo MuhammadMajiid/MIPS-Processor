@@ -151,6 +151,8 @@ The Data Path is composed of several separate components, each is well designed 
 
 #### FPGA Implementaion
 
+![Vivado](Images/VivadoIP.png)
+
 ***Soon!!***
 
 #### Reference
